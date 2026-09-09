@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+
 const useChatbot = () => {
   const [messages, setMessages] = useState([
-    { text: "👋 Paste a YouTube video ID to get started.", sender: "bot" },
+    { text: "Paste a YouTube video ID to get started.", sender: "bot" },
   ]);
   const [videoSet, setVideoSet] = useState(false);
 
@@ -16,7 +18,7 @@ const useChatbot = () => {
 
     try {
       if (!videoSet) {
-        const response = await axios.post("http://127.0.0.1:8000/api/set-video/", {
+        const response = await axios.post(`${API_BASE_URL}/api/set-video/`, {
           video_id: message.trim(),
         });
 
@@ -27,7 +29,7 @@ const useChatbot = () => {
           setVideoSet(true);
         }
       } else {
-        const response = await axios.post("http://127.0.0.1:8000/api/chat/", {
+        const response = await axios.post(`${API_BASE_URL}/api/chat/`, {
           message,
         });
 
