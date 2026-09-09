@@ -1,0 +1,18 @@
+Django>=4.2,<5.1
+gunicorn
+whitenoise
+
+# YouTube transcript fetching
+youtube-transcript-api
+
+# LangChain core + integrations
+langchain-core
+langchain-text-splitters
+langchain-community
+langchain-huggingface
+
+# Vector store — FAISS (CPU version, no GPU needed for this scale)
+faiss-cpu
+
+# Underlying HF client used by langchain-huggingface
+huggingface_hub
